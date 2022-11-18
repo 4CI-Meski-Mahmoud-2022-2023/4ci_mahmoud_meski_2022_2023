@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=VenditaArticolo
+comment1.params=
+comment1.target=VenditaArticolo()
+comment2.params=
+comment2.target=void\ start()
+comment3.params=
+comment3.target=void\ describeProgram()
+comment4.params=
+comment4.target=void\ getInput()
+comment5.params=
+comment5.target=void\ displayOutput()
+numComments=6
