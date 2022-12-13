@@ -8,6 +8,7 @@ public class Articolo{
         this.prezzo = 0.0;
         this.quantita = 0;
     }
+    // 
     
     public void setNome(String n){
         if(n!=null){
