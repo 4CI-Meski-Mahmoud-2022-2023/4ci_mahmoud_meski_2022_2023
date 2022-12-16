@@ -1,0 +1,32 @@
+# Change log
+All important changes to this project will be documented in this file.
+
+## [0.01] - 06-10-2022
+I added the Washing Machine builder;
+
+## [0.02] - 06-10-2022
+I added the on and off method;
+
+## [0.03] - 06-10-2022
+I added the method to define the brand;
+
+## [0.04] - 06-10-2022
+I added the method to define the model;
+
+## [0.05] - 06-10-2022
+I added the method that sets, increases and decreases the washing machine program;
+
+## [0.06] - 06-10-2022
+I added the method that sets, increases and decreases the temperature of the washing machine;
+
+## [0.07] - 06-10-2022
+I added the method to define the price;
+
+## [0.08] - 06-10-2022
+I added the method that sets, increases and decreases the revolutions of the washing machine;
+
+## [0.09] - 06-10-2022
+I added the method to define the kgs supported;
+
+## [0.10] - 06-10-2022
+I added the method that sets, increases and decreases the washing machine time;
