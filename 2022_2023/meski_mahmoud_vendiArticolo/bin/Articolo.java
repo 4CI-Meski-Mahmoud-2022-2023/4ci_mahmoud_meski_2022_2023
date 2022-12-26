@@ -4,7 +4,7 @@ public class Articolo{
     private int quantita;
     
     public Articolo(){
-        this.nome =" ";
+        this.nome ="anonimo ";
         this.prezzo = 0.0;
         this.quantita = 0;
     }
@@ -13,9 +13,9 @@ public class Articolo{
     public void setNome(String n){
         if(n!=null){
             this.nome = n;
-        }else{
+        }/*else{
             this.nome = "anonimo";
-        }
+        }*/
     }
     
     public void setPrezzo(double p){
