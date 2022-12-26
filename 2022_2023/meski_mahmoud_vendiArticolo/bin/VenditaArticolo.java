@@ -29,4 +29,4 @@ public class VenditaArticolo{
     public void displayOutput(){
         System.out.println(articolo.getNome() + ", " + articolo.getPrezzo() + ", " + articolo.getQuantita());
     }
-}
+}//una vendita se non calcoli il prezzo a cosa serve?
