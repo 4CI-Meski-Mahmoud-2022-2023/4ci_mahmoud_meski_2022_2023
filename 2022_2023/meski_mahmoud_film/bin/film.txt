@@ -1,0 +1,7 @@
+La strada;Federico Fellini;1:29
+Taxi Driver;Martin Scorsese;2:16
+Edward Mani di Forbice;Tim Burton;1:12
+Pulp Fiction;Quentin Tarantino;2:08
+Amarcord;Federico Fellini;3:23
+Toro scatenato;Martin Scorsese;1:16
+Apocalypse Now;Francis Ford Coppola;1:30
