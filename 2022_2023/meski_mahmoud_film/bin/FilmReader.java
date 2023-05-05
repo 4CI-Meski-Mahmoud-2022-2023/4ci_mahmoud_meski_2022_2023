@@ -9,6 +9,7 @@ public class FilmReader {
 
     public FilmReader(String fileName) {
         films = new ArrayList<>();
+        
         try {
             Scanner scanner = new Scanner(new File(fileName));
             while (scanner.hasNextLine()) {
@@ -18,7 +19,9 @@ public class FilmReader {
                 films.add(film);
             }
             scanner.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        // Utilizzato per gestire eventuali eccezioni nel caso in cui il file non possa essere trovato.
+        {
             System.out.println("File non trovato");
         }
     }
