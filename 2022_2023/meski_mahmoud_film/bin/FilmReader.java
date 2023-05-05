@@ -12,11 +12,16 @@ public class FilmReader {
         films = new ArrayList<>();
         
         try {
+            // Scanner del file
             Scanner scanner = new Scanner(new File(fileName));
             while (scanner.hasNextLine()) {
+                // Legge ogni linea del file
                 String line = scanner.nextLine();
+                // Divide la linea letta in un array (Le separa quando trova ;)
                 String[] tokens = line.split(";");
+                // Crea l'oggetto film
                 Film film = new Film(tokens[0], tokens[1], tokens[2]);
+                // Scrive L'oggetto film nell'ArrayList
                 films.add(film);
             }
             scanner.close();
