@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Dato un nome del file crea un Arraylist con i film
 public class FilmReader {
 
     private ArrayList<Film> films;
