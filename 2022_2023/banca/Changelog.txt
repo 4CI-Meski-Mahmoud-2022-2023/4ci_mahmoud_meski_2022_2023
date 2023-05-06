@@ -1,0 +1,2 @@
+06\05\23 13:30
+Questo package al momento simula un app della banca su cmd
