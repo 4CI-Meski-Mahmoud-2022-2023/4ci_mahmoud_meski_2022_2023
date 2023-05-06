@@ -1,2 +1,4 @@
 06\05\23 13:30
 Questo package al momento simula un app della banca su cmd
+06\05\23 17:10
+Questo package al momento lancia un app di base che ti permette solo di aggiungere conti correnti depositare 
