@@ -1,17 +1,31 @@
 public class ContoCorrente {
-    private static int prossimoNumeroConto = 1;
-
-    private String nomeIntestatario;
-    private String cognomeIntestatario;
+    private static int ultimoNumeroConto = 0;
     private int numeroConto;
+    private String nomeTitolare;
+    private String cognomeTitolare;
     private double saldo;
 
-    public ContoCorrente(String nomeIntestatario, String cognomeIntestatario, double saldoIniziale) {
-        this.nomeIntestatario = nomeIntestatario;
-        this.cognomeIntestatario = cognomeIntestatario;
-        this.numeroConto = prossimoNumeroConto;
-        this.saldo = saldoIniziale;
-        prossimoNumeroConto++;
+    public ContoCorrente(String nomeTitolare, String cognomeTitolare, double importoIniziale) {
+        this.numeroConto = ++ultimoNumeroConto;
+        this.nomeTitolare = nomeTitolare;
+        this.cognomeTitolare = cognomeTitolare;
+        this.saldo = importoIniziale;
+    }
+
+    public int getNumeroConto() {
+        return numeroConto;
+    }
+
+    public String getNomeTitolare() {
+        return nomeTitolare;
+    }
+
+    public String getCognomeTitolare() {
+        return cognomeTitolare;
+    }
+
+    public double getSaldo() {
+        return saldo;
     }
 
     public void deposita(double importo) {
@@ -19,22 +33,9 @@ public class ContoCorrente {
     }
 
     public void preleva(double importo) {
-        if (importo > saldo) {
+        if (saldo < importo) {
             throw new IllegalArgumentException("Saldo insufficiente");
         }
         saldo -= importo;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public int getNumeroConto() {
-        return numeroConto;
-    }
-
-    @Override
-    public String toString() {
-        return "ContoCorrente [nomeIntestatario=" + nomeIntestatario + ", numeroConto=" + numeroConto + ", saldo=" + saldo + "]";
     }
 }

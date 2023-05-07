@@ -67,8 +67,9 @@ public class BankApp extends JFrame {
         depositoPanel.add(contiDepositoLabel);
         contiComboBox = new JComboBox<>();
         depositoPanel.add(contiComboBox);
+
         JLabel importoDepositoLabel = new JLabel("Importo");
-        JTextField importoDaDepositoField = new JTextField();
+        importoDaDepositoField = new JTextField();
         depositoPanel.add(importoDepositoLabel);
         depositoPanel.add(importoDaDepositoField);
 
@@ -77,17 +78,105 @@ public class BankApp extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = contiComboBox.getSelectedIndex();
-                ContoCorrente contoCorrente = banca.getContoCorrente(selectedIndex);
                 double importo = Double.parseDouble(importoDaDepositoField.getText());
+                ContoCorrente contoCorrente = banca.getContoCorrente(selectedIndex);
                 contoCorrente.deposita(importo);
-                saldoTextArea.setText("Saldo: " + contoCorrente.getSaldo());
+                saldoTextArea.setText("Saldo attuale: " + contoCorrente.getSaldo());
                 JOptionPane.showMessageDialog(BankApp.this, "Deposito effettuato con successo!");
             }
         });
         depositoPanel.add(depositaButton);
 
-        saldoTextArea = new JTextArea();
-        saldoTextArea.setEditable(false);
-        depositoPanel.add(saldoTextArea);
+        JPanel prelievoPanel = new JPanel();
+        prelievoPanel.setLayout(new GridLayout(3, 2));
+        prelievoPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        tabbedPane.addTab("Prelievo", prelievoPanel);
+
+        JLabel contiPrelievoLabel = new JLabel("Conti Correnti");
+        prelievoPanel.add(contiPrelievoLabel);
+        contiComboBox = new JComboBox<>();
+        prelievoPanel.add(contiComboBox);
+
+        JLabel importoPrelievoLabel = new JLabel("Importo");
+        importoDaPrelievoField = new JTextField();
+        prelievoPanel.add(importoPrelievoLabel);
+        prelievoPanel.add(importoDaPrelievoField);
+
+        JButton prelevaButton = new JButton("Preleva");
+        prelevaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = contiComboBox.getSelectedIndex();
+                double importo = Double.parseDouble(importoDaPrelievoField.getText());
+                ContoCorrente contoCorrente = banca.getContoCorrente(selectedIndex);
+                try {
+                    contoCorrente.preleva(importo);
+                    saldoTextArea.setText("Saldo attuale: " + contoCorrente.getSaldo());
+                    JOptionPane.showMessageDialog(BankApp.this, "Prelievo effettuato con successo!");
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(BankApp.this, "Impossibile effettuare il prelievo. Saldo insufficiente.");
+                }
+            }
+        });
+        prelievoPanel.add(prelevaButton);
+
+        JPanel saldoPanel = new JPanel();
+        saldoPanel.setLayout(new BorderLayout());
+        saldoPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        tabbedPane.addTab("Saldo", saldoPanel);
+
+        JLabel contiSaldoLabel = new JLabel("Conti Correnti");
+        saldoPanel.add(contiSaldoLabel, BorderLayout.NORTH);
+        contiComboBox = new JComboBox<>();
+        for (ContoCorrente conto : banca.getContiCorrenti()) {
+            contiComboBox.addItem("Conto " + conto.getNumeroConto());
         }
+        
+        
+        contiComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = contiComboBox.getSelectedIndex();
+                ContoCorrente contoCorrente = banca.getContoCorrente(selectedIndex);
+                saldoTextArea.setText("Saldo attuale: " + contoCorrente.getSaldo());
+            }
+        });
+        
+        JLabel saldoLabel = new JLabel("Saldo attuale");
+        JTextArea saldoTextArea = new JTextArea();
+        saldoTextArea.setEditable(false);
+        
+        depositoPanel.add(saldoLabel);
+        depositoPanel.add(saldoTextArea);
+        
+        prelievoPanel.add(saldoLabel);
+        prelievoPanel.add(saldoTextArea);
+        
+    
+        JPanel visualizzaContiPanel = new JPanel();
+        visualizzaContiPanel.setLayout(new BorderLayout());
+        tabbedPane.addTab("Visualizza Conti Correnti", visualizzaContiPanel);
+    
+        JTextArea contiTextArea = new JTextArea();
+        contiTextArea.setEditable(false);
+        visualizzaContiPanel.add(contiTextArea, BorderLayout.CENTER);
+    
+        JScrollPane scrollPane = new JScrollPane(contiTextArea);
+        visualizzaContiPanel.add(scrollPane, BorderLayout.CENTER);
+    
+        JButton visualizzaContiButton = new JButton("Visualizza Conti");
+        visualizzaContiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Conti correnti aperti presso " + banca.getNome() + ":\n");
+                for (ContoCorrente cc : banca.getContiCorrenti()) {
+                    sb.append(cc.toString());
+                    sb.append("\n");
+                }
+                contiTextArea.setText(sb.toString());
+            }
+        });
+        visualizzaContiPanel.add(visualizzaContiButton, BorderLayout.SOUTH);
     }
+}

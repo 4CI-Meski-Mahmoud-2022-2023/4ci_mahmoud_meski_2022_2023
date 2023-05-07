@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class AperturaContoCorrenteView {
     private Scanner scanner;
-
     public AperturaContoCorrenteView(Scanner scanner) {
         this.scanner = scanner;
     }

@@ -3,5 +3,4 @@ public class BankAppTest {
         BankApp bankApp = new BankApp();
         bankApp.setVisible(true);
     }
-    
 }

@@ -2,10 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Banca {
-
     private String nome;
     private List<ContoCorrente> contiCorrenti;
-
+    
     public Banca(String nome) {
         this.nome = nome;
         this.contiCorrenti = new ArrayList<>();
@@ -22,5 +21,13 @@ public class Banca {
             }
         }
         throw new IllegalArgumentException("Conto corrente non trovato");
+    }
+
+    public List<ContoCorrente> getContiCorrenti() {
+        return contiCorrenti;
+    }
+    
+    public String getNome() {
+        return nome;
     }
 }
