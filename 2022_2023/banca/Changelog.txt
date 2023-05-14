@@ -4,3 +4,5 @@ Questo package al momento simula un app della banca su cmd
 Questo package al momento lancia un app di base che ti permette solo di aggiungere conti correnti depositare 
 07\05\23 14:40
 Questo package al momento  lancia un app di base che ti permette di fare quasi tutto il richiesto ovviamente sono da sistemare i listener e dei metodi
+14\05\23 14:50
+Questo package implementa una GUI per la gestione di una banca. Consente di aprire un conto corrente, visualizzare il saldo di un conto corrente selezionato, effettuare un deposito su un conto corrente selezionato e prelevare denaro da un conto corrente selezionato. Inoltre, il programma consente di trasferire denaro da un conto corrente selezionato a un altro conto corrente selezionato. Il programma utilizza le classi Banca e ContoCorrente per la gestione dei conti bancari. I listener non sono ancora separati ci sto lavorando
