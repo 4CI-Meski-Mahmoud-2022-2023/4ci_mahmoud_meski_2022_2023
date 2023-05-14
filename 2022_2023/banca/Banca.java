@@ -30,4 +30,29 @@ public class Banca {
     public String getNome() {
         return nome;
     }
+
+    public boolean trasferisci(ContoCorrente contoCorrenteOrigine, ContoCorrente contoCorrenteDestinazione, double importo) {
+        contoCorrenteOrigine.preleva(importo);
+        contoCorrenteDestinazione.deposita(importo);
+        return true;
+    }
+    
+    public boolean deposita(ContoCorrente contoCorrente, double importo) {
+        if (importo <= 0) {
+            throw new IllegalArgumentException("Importo non valido");
+        }
+        contoCorrente.deposita(importo);
+        return true;
+    }
+    
+    public boolean preleva(ContoCorrente contoCorrente, double importo) {
+        if (importo <= 0) {
+            throw new IllegalArgumentException("Importo non valido");
+        }
+        if (contoCorrente.getSaldo() < importo) {
+            throw new IllegalArgumentException("Saldo non sufficiente");
+        }
+        contoCorrente.preleva(importo);
+        return true;
+    }
 }

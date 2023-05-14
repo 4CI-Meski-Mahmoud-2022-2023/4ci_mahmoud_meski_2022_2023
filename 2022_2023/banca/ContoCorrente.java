@@ -32,10 +32,30 @@ public class ContoCorrente {
         saldo += importo;
     }
 
-    public void preleva(double importo) {
+    public boolean preleva(double importo) {
         if (saldo < importo) {
             throw new IllegalArgumentException("Saldo insufficiente");
         }
         saldo -= importo;
+        return true;
+    }
+
+
+    public void trasferisci(double importo, ContoCorrente contoDestinazione) throws IllegalArgumentException {
+        if (importo <= 0) {
+            throw new IllegalArgumentException("L'importo del trasferimento deve essere maggiore di zero.");
+        }
+        if (saldo < importo) {
+            throw new IllegalArgumentException("Il saldo del conto corrente non è sufficiente per effettuare il trasferimento.");
+        }
+        saldo -= importo;
+        contoDestinazione.deposita(importo);
+    }
+    
+
+    @Override
+    public String toString() {
+        return "Conto " + this.numeroConto + " - " + this.nomeTitolare + " " + this.cognomeTitolare;
     }
 }
+
